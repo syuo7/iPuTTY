@@ -1,0 +1,17 @@
+language: c
+branches:
+  only:
+    - master
+    
+build:
+  pre_ci_boot:
+    image_name: localhost:5000/ubuntu1
+    image_tag: 16.04
+    pull: true
+    
+  ci:
+    - cd unix
+    - ./configure
+    - make -f Makefile.gtk clean
+    - make -f Makefile.gtk
+    
